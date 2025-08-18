@@ -3,7 +3,7 @@ class CreateRestaurants < ActiveRecord::Migration[8.0]
     create_table :restaurants do |t|
       t.string :name
       t.text :description
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end
