@@ -1,1 +1,1 @@
-json.partial! "restaurants/restaurant", restaurant: @restaurant
+json.partial! "api/v1/restaurants/restaurant", restaurant: @restaurant
