@@ -5,6 +5,7 @@ class Restaurant < ApplicationRecord
   # Add has_prefix_id before associations because it overrides has_many to include prefix ID helpers.
   has_prefix_id :res
 
+  has_many :menu_items, inverse_of: :restaurant, dependent: :destroy
   has_one_attached :logo
 
   validates :name, presence: true
