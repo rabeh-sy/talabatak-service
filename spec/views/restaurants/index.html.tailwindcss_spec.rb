@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "restaurants/index", type: :view do
+RSpec.describe "admin/restaurants/index", type: :view do
   before(:each) do
     assign(:restaurants, [
       Restaurant.create!(

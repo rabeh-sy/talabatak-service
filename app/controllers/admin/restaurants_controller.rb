@@ -25,7 +25,7 @@ class Admin::RestaurantsController < Admin::ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to @restaurant, notice: "Restaurant was successfully created." }
+        format.html { redirect_to [ :admin, @restaurant ], notice: "Restaurant was successfully created." }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class Admin::RestaurantsController < Admin::ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
-        format.html { redirect_to @restaurant, notice: "Restaurant was successfully updated.", status: :see_other }
+        format.html { redirect_to [ :admin, @restaurant ], notice: "Restaurant was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @restaurant }
       else
         format.html { render :edit, status: :unprocessable_entity }
