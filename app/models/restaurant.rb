@@ -11,4 +11,7 @@ class Restaurant < ApplicationRecord
   validates :name, presence: true
 
   enum :status, { active: 0, inactive: 1 }
+
+  accepts_nested_attributes_for :menu_items, allow_destroy: true,
+    reject_if: proc { |attrs| attrs["name"].blank? }
 end

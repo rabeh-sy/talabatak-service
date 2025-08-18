@@ -13,10 +13,12 @@ class Admin::RestaurantsController < Admin::ApplicationController
   # GET /admin/restaurants/new
   def new
     @restaurant = Restaurant.new
+    10.times { @restaurant.menu_items.build }
   end
 
   # GET /admin/restaurants/1/edit
   def edit
+    3.times { @restaurant.menu_items.build }
   end
 
   # POST /admin/restaurants
@@ -60,6 +62,7 @@ class Admin::RestaurantsController < Admin::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restaurant_params
-      params.expect(restaurant: [ :name, :description, :status, :logo ])
+      params.expect(restaurant: [ :name, :description, :status, :logo,
+        menu_items_attributes: [ [ :id, :name, :description, :price, :category, :available, :_destroy ] ] ])
     end
 end
