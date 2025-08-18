@@ -60,6 +60,6 @@ class Admin::RestaurantsController < Admin::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restaurant_params
-      params.expect(restaurant: [ :name, :description, :status ])
+      params.expect(restaurant: [ :name, :description, :status, :logo ])
     end
 end
