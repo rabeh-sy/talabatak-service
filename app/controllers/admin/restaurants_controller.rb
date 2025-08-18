@@ -1,5 +1,5 @@
 class Admin::RestaurantsController < Admin::ApplicationController
-  before_action :set_restaurant, only: %i[ show edit update destroy ]
+  before_action :set_restaurant, only: %i[ edit update destroy ]
 
   # GET /admin/restaurants
   def index
@@ -8,7 +8,8 @@ class Admin::RestaurantsController < Admin::ApplicationController
 
   # GET /admin/restaurants/1
   def show
-    @restaurant = Restaurant.includes(:menu_items).find(params[:id])
+    # ids are masked by prefix_id to make restaurant pages unguessable.
+    @restaurant = Restaurant.includes(:menu_items).find_by_prefix_id(params[:id])
   end
 
   # GET /admin/restaurants/new
@@ -58,7 +59,7 @@ class Admin::RestaurantsController < Admin::ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
-      @restaurant = Restaurant.find(params.expect(:id))
+      @restaurant = Restaurant.find_by_prefix_id(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
