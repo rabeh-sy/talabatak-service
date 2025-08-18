@@ -3,6 +3,7 @@ class Api::V1::RestaurantsController < Api::V1::ApplicationController
 
   # GET api/v1/restaurants/1.json
   def show
+    @restaurant = Restaurant.includes(:menu_items).find(params[:id])
   end
 
   private

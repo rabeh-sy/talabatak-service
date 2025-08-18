@@ -8,6 +8,7 @@ class Admin::RestaurantsController < Admin::ApplicationController
 
   # GET /admin/restaurants/1
   def show
+    @restaurant = Restaurant.includes(:menu_items).find(params[:id])
   end
 
   # GET /admin/restaurants/new
