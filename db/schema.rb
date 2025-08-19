@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_18_225011) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_19_001721) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -51,6 +51,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_18_225011) do
     t.index ["restaurant_id"], name: "index_menu_items_on_restaurant_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "restaurant_id", null: false
+    t.integer "total", default: 0, null: false
+    t.json "details", default: [], null: false
+    t.integer "sequence_number", null: false
+    t.integer "table_number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -62,4 +73,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_18_225011) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "menu_items", "restaurants"
+  add_foreign_key "orders", "restaurants"
 end

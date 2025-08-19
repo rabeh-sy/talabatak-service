@@ -4,6 +4,7 @@ class Restaurant < ApplicationRecord
   has_prefix_id :res
 
   has_many :menu_items, inverse_of: :restaurant, dependent: :destroy
+  has_many :orders, inverse_of: :restaurant, dependent: :destroy
   has_one_attached :logo
 
   validates :name, presence: true
