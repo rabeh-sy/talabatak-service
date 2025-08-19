@@ -1,0 +1,7 @@
+ar:
+  activerecord:
+    attributes:
+      menu_item:
+        category_list: # https://github.com/shlima/translate_enum
+          food: وجبات
+          drink: مشاريب

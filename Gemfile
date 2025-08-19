@@ -45,6 +45,9 @@ gem "image_processing", "~> 1.2"
 # Friendly Prefixed IDs for your Ruby on Rails models
 gem "prefixed_ids", "~> 1.8"
 
+# Easily Translate Enums in Rails
+gem "translate_enum", "~> 0.2.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
