@@ -1,4 +1,5 @@
 class Restaurant < ApplicationRecord
+  RESTAURANT_CLIENT_URL = "https://qr.rabeh.sy/restaurants"
   # Add has_prefix_id before associations because it overrides has_many to include prefix ID helpers.
   # NEVER change prefix id, it would make all QR codes unusable!.
   has_prefix_id :res
@@ -13,4 +14,10 @@ class Restaurant < ApplicationRecord
 
   accepts_nested_attributes_for :menu_items, allow_destroy: true,
     reject_if: proc { |attrs| attrs["name"].blank? }
+
+  def qr_code
+    RQRCode::QRCode.new("#{RESTAURANT_CLIENT_URL}/#{prefix_id}").as_png(
+      size: 400
+    )
+  end
 end
