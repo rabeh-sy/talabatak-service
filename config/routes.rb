@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :restaurants
+    resource :session
+    resources :passwords, param: :token
   end
 
   namespace :api do
@@ -21,5 +23,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "admin/restaurants#index"
 end

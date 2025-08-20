@@ -4,6 +4,8 @@ RSpec.describe "Admin::Restaurants", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Restaurant. As you add validations to Restaurant, be sure to
   # adjust the attributes here as well.
+  let(:user) { User.create!(email_address: 'test@example.com', password: 'password') }
+
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
   }
@@ -11,6 +13,10 @@ RSpec.describe "Admin::Restaurants", type: :request do
   let(:invalid_attributes) {
     skip("Add a hash of attributes invalid for your model")
   }
+
+  before do
+    sign_in_as(user)
+  end
 
   describe "GET /index" do
     it "renders a successful response" do
