@@ -35,9 +35,20 @@ RSpec.describe "Admin::Restaurants", type: :request do
   end
 
   describe "GET /new" do
-    it "renders a successful response" do
-      get new_admin_restaurant_url
-      expect(response).to be_successful
+    context "for a normal user" do
+      it "does not render successful response" do
+        get new_admin_restaurant_url
+        expect(response).not_to be_successful
+      end
+    end
+
+    context "for a super admin user" do
+      let(:user) { User.create!(email_address: 'test@example.com', password: 'password', super_admin: true) }
+
+      it "renders a successful response" do
+        get new_admin_restaurant_url
+        expect(response).to be_successful
+      end
     end
   end
 
