@@ -3,28 +3,31 @@ class Admin::RestaurantsController < Admin::ApplicationController
 
   # GET /admin/restaurants
   def index
-    @restaurants = Restaurant.all
+    @restaurants = policy_scope([ :admin, Restaurant ])
   end
 
   # GET /admin/restaurants/1
   def show
     # ids are masked by prefix_id to make restaurant pages unguessable.
-    @restaurant = Restaurant.includes(:menu_items).find_by_prefix_id(params[:id])
+    @restaurant = policy_scope([ :admin, Restaurant ]).includes(:menu_items).find_by_prefix_id(params[:id])
   end
 
   # GET /admin/restaurants/new
   def new
+    authorize([ :admin, :restaurant ])
     @restaurant = Restaurant.new
     10.times { @restaurant.menu_items.build }
   end
 
   # GET /admin/restaurants/1/edit
   def edit
+    authorize([ :admin, @restaurant ])
     3.times { @restaurant.menu_items.build }
   end
 
   # POST /admin/restaurants
   def create
+    authorize([ :admin, Restaurant ])
     @restaurant = Restaurant.new(restaurant_params)
 
     respond_to do |format|
@@ -38,6 +41,7 @@ class Admin::RestaurantsController < Admin::ApplicationController
 
   # PATCH/PUT /admin/restaurants/1
   def update
+    authorize([ :admin, @restaurant ])
     respond_to do |format|
       if @restaurant.update(restaurant_params)
         format.html { redirect_to [ :admin, @restaurant ], notice: "Restaurant was successfully updated.", status: :see_other }
@@ -49,6 +53,7 @@ class Admin::RestaurantsController < Admin::ApplicationController
 
   # DELETE /admin/restaurants/1
   def destroy
+    authorize([ :admin, @restaurant ])
     @restaurant.destroy!
 
     respond_to do |format|

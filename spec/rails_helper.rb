@@ -84,3 +84,5 @@ def sign_out
   Current.session&.destroy!
   cookies.delete(:session_id)
 end
+
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
