@@ -77,3 +77,5 @@ gem "rack-cors", "~> 3.0"
 gem "rqrcode", "~> 3.1"
 
 gem "pundit", "~> 2.5"
+
+gem "telegram-bot-ruby", "~> 2.4"
