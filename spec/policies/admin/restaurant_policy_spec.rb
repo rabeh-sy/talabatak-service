@@ -11,11 +11,11 @@ RSpec.describe Admin::RestaurantPolicy, type: :policy do
     context "who owns the restaurant" do
       let(:restaurant) { Restaurant.create({ name: "Test Restaurant", user_id: user.id }) }
 
-      it { should permit(:show)    }
+      it { should     permit(:show)    }
       it { should_not permit(:create)  }
       it { should_not permit(:new)     }
-      it { should permit(:update)  }
-      it { should permit(:edit)    }
+      it { should     permit(:update)  }
+      it { should     permit(:edit)    }
       it { should_not permit(:destroy) }
     end
 
