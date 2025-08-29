@@ -11,6 +11,8 @@ class Restaurant < ApplicationRecord
   has_one_attached :logo
   belongs_to :user, optional: true
 
+  # TODO: add validation to menu item description length
+  # TODO: allow arabic numbers on form submission
   validates :name, presence: true
 
   enumerize :status, in: [ :active, :inactive ], default: :active
