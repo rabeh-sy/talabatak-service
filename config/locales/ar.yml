@@ -21,7 +21,7 @@ ar:
       secondary_field:
         notes: ملاحظات
       currency:
-        syp: ليرة
+        syp: ل.س
         usd: دولار
       view_mode:
         list: قائمة
