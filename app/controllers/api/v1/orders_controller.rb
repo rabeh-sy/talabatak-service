@@ -14,6 +14,6 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
   private
 
   def order_params
-    params.expect(order: [ :total, :table_number, details: [ [ :item_id, :name, :price, :quantity ] ] ])
+    params.expect(order: [ :total, :table_number, details: [ [ :item_id, :name, :price, :quantity ] ], fields: {} ])
   end
 end

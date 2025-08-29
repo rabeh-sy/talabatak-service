@@ -1,7 +1,29 @@
 ar:
-  activerecord:
-    attributes:
-      menu_item:
-        category_list: # https://github.com/shlima/translate_enum
-          food: وجبات
-          drink: مشروبات
+  enumerize:
+    fields:
+      email:
+        type: string
+        placeholder: أدخل ايميلك
+      phone_number:
+        type: tel
+        placeholder: أدخل رقم تلفونك
+      table_number:
+        type: number
+        placeholder: أدخل رقم الطاولة
+      notes:
+        type: string
+        placeholder: اكتب ملاحظاتك عن الطلب
+    restaurant:
+      primary_field:
+        email: ايميل
+        phone_number: رقم التلفون
+        table_number: رقم الطاولة
+      secondary_field:
+        notes: ملاحظات
+      currency:
+        syp: ليرة
+        usd: دولار
+    menu_item:
+      category:
+        food: وجبات
+        drinks: مشروبات

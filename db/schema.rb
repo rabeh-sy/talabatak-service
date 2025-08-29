@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_22_170208) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_29_144850) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -44,10 +44,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_22_170208) do
     t.string "name"
     t.text "description"
     t.integer "price"
-    t.integer "category"
     t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
     t.index ["restaurant_id"], name: "index_menu_items_on_restaurant_id"
   end
 
@@ -56,20 +56,29 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_22_170208) do
     t.integer "total", default: 0, null: false
     t.json "details", default: [], null: false
     t.integer "sequence_number", null: false
-    t.integer "table_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "fields", default: []
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "telegram_chat_id"
+    t.string "primary_field", default: "table_number"
+    t.boolean "primary_field_shown", default: true
+    t.boolean "primary_field_required", default: true
+    t.string "secondary_field", default: "notes"
+    t.boolean "secondary_field_shown", default: false
+    t.boolean "secondary_field_required", default: false
+    t.string "view_mode", default: "list"
+    t.string "status", default: "active"
+    t.string "theme_color", default: "green"
+    t.string "currency", default: "SYP"
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 

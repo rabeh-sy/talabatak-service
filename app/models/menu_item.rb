@@ -1,8 +1,9 @@
 class MenuItem < ApplicationRecord
+  extend Enumerize
+
   include TranslateEnum
 
   belongs_to :restaurant
 
-  enum :category, { food: 0, drink: 1 }
-  translate_enum :category
+  enumerize :category, in: [ :food, :drinks ]
 end

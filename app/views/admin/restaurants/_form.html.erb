@@ -24,12 +24,36 @@
   <div class="my-5">
     <%= form.label :status %>
     <%= form.select :status,
-        Restaurant.statuses.keys.map { |key| [key.humanize, key] },
+        Restaurant.status.values.map { |v| [v.text, v] },
         {},
         class: [
           "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
           restaurant.errors[:status].none? ? "border-gray-400 focus:outline-blue-600" : "border-red-400 focus:outline-red-600"
         ] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :primary_field %>
+    <%= form.select :primary_field,
+          Restaurant.primary_field.values.map { |v| [v.text, v] },
+          { prompt: "Select required field" },
+          class: [
+            "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+            { "border-gray-400 focus:outline-blue-600": restaurant.errors[:primary_field].none?,
+              "border-red-400 focus:outline-red-600": restaurant.errors[:primary_field].any? }
+          ] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :secondary_field %>
+    <%= form.select :secondary_field,
+          Restaurant.secondary_field.values.map { |v| [v.text, v] },
+          { prompt: "Select optional field" },
+          class: [
+            "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full",
+            { "border-gray-400 focus:outline-blue-600": restaurant.errors[:secondary_field].none?,
+              "border-red-400 focus:outline-red-600": restaurant.errors[:secondary_field].any? }
+          ] %>
   </div>
 
   <div class="my-5">
@@ -57,7 +81,7 @@
 
       <%= menu_item_fields.label :category %>
       <%= menu_item_fields.select :category,
-          MenuItem.categories.keys.map { |key| [key.humanize, key] },
+          MenuItem.category.values.map { |v| [v.text, v] },
           {},
           class: [
             "block shadow-sm rounded-md border px-3 py-2 mt-2 w-full border-gray-400 focus:outline-blue-600"

@@ -79,3 +79,5 @@ gem "rqrcode", "~> 3.1"
 gem "pundit", "~> 2.5"
 
 gem "telegram-bot-ruby", "~> 2.4"
+
+gem "enumerize", "~> 2.8"
