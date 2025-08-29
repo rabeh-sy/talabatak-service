@@ -18,6 +18,7 @@ class Restaurant < ApplicationRecord
   enumerize :secondary_field, in: [ :notes ], scope: true
   enumerize :theme_color, in: [ :green, :blue, :red, :yellow, :black ], default: :green
   enumerize :currency, in: [ :syp, :usd, :tl ], default: :syp
+  enumerize :view_mode, in: [ :list, :cards ], default: :list
 
   def primary_field_metadata
     field_metadata(:primary_field)

@@ -433,8 +433,6 @@ GEM
     thruster (0.1.15-x86_64-darwin)
     thruster (0.1.15-x86_64-linux)
     timeout (0.4.3)
-    translate_enum (0.2.0)
-      activesupport
     turbo-rails (2.0.16)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
@@ -500,7 +498,6 @@ DEPENDENCIES
   tailwindcss-rails
   telegram-bot-ruby (~> 2.4)
   thruster
-  translate_enum (~> 0.2.0)
   turbo-rails
   tzinfo-data
   web-console

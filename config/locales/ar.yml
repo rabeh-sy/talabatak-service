@@ -23,6 +23,18 @@ ar:
       currency:
         syp: ليرة
         usd: دولار
+      view_mode:
+        list: قائمة
+        cards: كروت
+      theme_color:
+        red: أحمر
+        green: أخضر
+        blue: أزرق
+        yellow: أصفر
+        black: آسود
+      status:
+        active: نشط
+        inactive: غير نشط
     menu_item:
       category:
         food: وجبات

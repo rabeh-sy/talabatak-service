@@ -69,7 +69,8 @@ class Admin::RestaurantsController < Admin::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restaurant_params
-      params.expect(restaurant: [ :name, :description, :status, :logo,
-        menu_items_attributes: [ [ :id, :name, :description, :price, :category, :available, :_destroy ] ] ])
+      params.expect(restaurant: [ :name, :description, :status, :logo, :primary_field, :secondary_field,
+        :view_mode, :theme_color,
+        menu_items_attributes: [ [ :id, :name, :description, :price, :category, :available, :image, :_destroy ] ] ])
     end
 end
