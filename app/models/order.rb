@@ -29,7 +29,7 @@ class Order < ApplicationRecord
       end
     end
 
-    lines << "\n💰 المجموع: #{total} ل.س"
+    lines << "\n💰 المجموع: #{total} #{restaurant.currency_text}"
 
     lines.join("\n")
   end
